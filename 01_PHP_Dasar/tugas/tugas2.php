@@ -10,5 +10,12 @@ Contoh :
 -->
 
 <?php
-  //
+  $arrays = [90,80,70,65,50];
+  foreach ($arrays as $array) {
+      if ($array>60){
+          echo "nilai anda adalah $array, selamat anda sudah lulus <br>";
+      }else{
+          echo "nilai anda adalah $array, mohon maaf anda belum lulus <br>";
+      }
+  }
 ?>
