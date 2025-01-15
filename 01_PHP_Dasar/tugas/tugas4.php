@@ -9,5 +9,10 @@ Tugas 4
  -->
 
  <?php
-  //
+  function findVolume ($i,$b,$h){
+    $volume = ($i * $b * $h) / 2;
+    return $volume;
+  }
+
+  $1 = 18; $b = 12; $h = 9;
 ?>
