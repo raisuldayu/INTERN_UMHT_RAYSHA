@@ -17,7 +17,7 @@ contoh :
     return true;
   }
 
-  $angka = 1;
+  $angka = 4;
 
   if (prima($angka)){
     echo "$angka adalah bilangan prima";
