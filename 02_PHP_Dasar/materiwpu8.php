@@ -25,7 +25,7 @@ echo $arr[0];
                 background-color: #BADA55;
                 text-align: center;
                 line-height: 30px;
-                margin 3px;
+                margin: 3px;
                 float: left;
                 transition: 1s;
             }
@@ -59,3 +59,47 @@ $angka = [
 
 </body>
 </html
+
+
+array asociative
+definisinya sama seperti array numerik, kecuali
+key-nya adalah string yang kita buat sendiri -->
+
+<?php
+$mahasiswa = [
+    [
+        "nama" => "Raisul",
+        "nisn" => "0083463554",
+        "email" => "raisuldayu@gmail.com",
+        "jurusan" => "pplg",
+    ],
+    [
+        "nama" => "hanoy",
+        "nisn" => "0078716380",
+        "email" => "hanizakiatulaminah@gmail.com",
+        "jurusan" => "pplg",
+    ],
+];
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar mahasiswa</title>
+</head>
+<body>
+     <h1>daftar mahasiswa</h1>
+     <?php foreach( $mahasiswa as $mhs ) :?>
+     <ul>
+        
+    <li>nama :<?= $mhs["nama"]; ?></li>
+    <li>Nisn :<?= $mhs["nisn"]; ?></li>
+    <li>Jurusan :<?= $mhs["email"]; ?></li>
+    <li>email :<?= $mhs["jurusan"]; ?></li>
+     </ul>
+     <?php endforeach; ?>
+
+</body>
+</html>
