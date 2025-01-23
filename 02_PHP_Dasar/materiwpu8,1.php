@@ -102,4 +102,4 @@ $mahasiswa = [
      <?php endforeach; ?>
 
 </body>
-</html>
+</html
