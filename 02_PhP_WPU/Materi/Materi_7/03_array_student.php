@@ -19,10 +19,10 @@ $mahasiswa = [
   <h1>Daftar Mahasiswa</h1>
   <ul>
     <?php foreach ($mahasiswa as $mhs): ?>
-      <li>Nama: <?= $mhs[0]; ?></li>
-      <li>NIM: <?= $mhs[1]; ?></li>
-      <li>Jurusan: <?= $mhs[2]; ?></li>
-      <li>Email: <?= $mhs[3]; ?></li>
+      <li>Nama: <?= $siswi[0]; ?></li>
+      <li>NIM: <?= $siswi[1]; ?></li>
+      <li>Jurusan: <?= $siswi[2]; ?></li>
+      <li>Email: <?= $siswi[3]; ?></li>
     <?php endforeach; ?>
   </ul>
 </body>

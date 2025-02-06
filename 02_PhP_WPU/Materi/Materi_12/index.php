@@ -32,9 +32,9 @@ $mahasiswa = query("SELECT * FROM SISWI");
     <td><?= $i; ?></td>
     <td>
         <a href="">ubah</a> |
-        <a href="hapus.php?id=<?= $row["id"]; ?>"> onclick="return confirm('yakinn?');">hapus</a>
+        <a href="hapus.php?id=<?= $row["id"]; ?>" onclick="return confirm('yakinn?');">hapus</a>
     </td>
-    <td><img src="img/<?= $row["gambar"]; ?>" width="50"> ></td>
+    <td><img src="img/<?= $row["gambar"]; ?>" width="50"> </td>
     <td><?= $row["nrp"]; ?></td>
     <td><?= $row["nama"]; ?></td>
     <td><?= $row["email"]; ?></td>

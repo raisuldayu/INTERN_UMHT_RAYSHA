@@ -45,9 +45,9 @@ if( isset($_POST["cari"]) ) {
     <td><?= $i; ?></td>
     <td>
         <a href="ubah.php?id=<?= $row["id"]; ?>">ubah</a> |
-        <a href="hapus.php?id=<?= $row["id"]; ?>"> onclick="return confirm('yakinn?');">hapus</a>
+        <a href="hapus.php?id=<?= $row["id"]; ?>" onclick="return confirm('yakinn?');">hapus</a>
     </td>
-    <td><img src="img/<?= $row["gambar"]; ?>" width="50"> ></td>
+    <td><img src="img/<?= $row["gambar"]; ?>" width="50"></td>
     <td><?= $row["nrp"]; ?></td>
     <td><?= $row["nama"]; ?></td>
     <td><?= $row["email"]; ?></td>

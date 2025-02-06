@@ -47,7 +47,7 @@ $result = mysqli_query($conn, "SELECT * FROM siswi");
         <a href="">raysha</a> |
         <a href="">zulga</a>
     </td>
-    <td><img src="img/<?= $row["gambar"]; ?>" width="50"> ></td>
+    <td><img src="img/<?= $row["gambar"]; ?>" width="50"> </td>
     <td><?= $row["nrp"]; ?></td>
     <td><?= $row["nama"]; ?></td>
     <td><?= $row["email"]; ?></td>
