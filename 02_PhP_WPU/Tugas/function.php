@@ -1,7 +1,6 @@
 <?php
-// koneksi ke database
-$conn = mysqli_connect("localhost", "root", "", "phpdasar");
 
+$conn = mysqli_connect("localhost", "root", "", "portal-berita");
 
 function query($query) {
     global $conn;
@@ -13,28 +12,26 @@ function query($query) {
     return $rows;
 }
 
-
 function tambah($data) {
     global $conn;
 
-    $nrp = htmlspecialchars($data["nrp"]);
-    $nama = htmlspecialchars($data["nama"]);
-    $email =  htmlspecialchars($data["email"]);
-    $jurusan = htmlspecialchars($data["jurusan"]);
+    $judul =  htmlspecialchars($data["judul"]);
+    $berita = htmlspecialchars($data["berita"]);
+    $gambar = htmlspecialchars($data["gambar"]);
 
-// upload gambar
-$gambar = upload();
-if( !$gambar ) {
+    // upload gambar
+    $gambar = upload();
+    if( !$gambar ) {
     return false;
-}
+    }
 
-    $query = "INSERT INTO siswi
+    $query = "INSERT INTO berita
     VALUES
-    ('', '$nrp', '$nama', '$email', '$jurusan', '$gambar')
+    ('', '$judul', '$berita', '$gambar')
     ";
-mysqli_query($conn,$query);
+    mysqli_query($conn,$query);
 
-return mysqli_affected_rows($conn);
+    return mysqli_affected_rows($conn);
 
 }
 
@@ -79,7 +76,7 @@ function upload() {
     $namaFileBaru .= $ekstensiGambar;
 
 
-    move_uploaded_file($tmpName, 'img/' . $namaFileBaru);
+    move_uploaded_file($tmpName, 'uploads/' . $namaFileBaru);
 
     return $namaFileBaru;
 
@@ -89,7 +86,7 @@ function upload() {
 
 function hapus($id) {
     global $conn;
-    mysqli_query($conn, "DELETE FROM siswi WHERE id = $id");
+    mysqli_query($conn, "DELETE FROM berita WHERE id = $id");
     return mysqli_affected_rows($conn);
 }
 
@@ -97,35 +94,32 @@ function hapus($id) {
 function ubah($data) {
     global $conn;
     $id = $data["id"];
-    $nrp = htmlspecialchars($data["nrp"]);
-    $nama = htmlspecialchars($data["nama"]);
-    $email =  htmlspecialchars($data["email"]);
-    $jurusan = htmlspecialchars($data["jurusan"]);
+    $judul =  htmlspecialchars($data["judul"]);
+    $isi = htmlspecialchars($data["isi"]);
     $gambarLama = htmlspecialchars($data["gambarLama"]);
+  // Check if the user uploaded a new image
+  if ($_FILES['gambar']['error'] === 4) {
+    $gambar = $gambarLama;
+  } else {
+    $gambar = upload();
+  }
+  $gambar = htmlspecialchars($data["gambar"]);
 
-    // cek apakah user pilih gambar baru atau tidak
-    if( $_FILES['gambar']['error'] === 4 ) {
-        $gambar = $gambarLama;
-    } else {
-        $gambar = upload();
-    }
 
-    $query = "UPDATE mahasiswa SET
-                nrp = '$nrp',
-                nama = '$nama',
-                email = '$email',
-                jurusan = '$jurusan',
+    $query = "UPDATE berita SET
+                judul = '$judul',
+                isi = '$isi',
                 gambar = '$gambar'
               WHERE id = $id
             ";
-mysqli_query($conn,$query);
+    mysqli_query($conn,$query);
 
-return mysqli_affected_rows($conn);
+    return mysqli_affected_rows($conn);
 
 }
 
 function cari($keyword) {
-    $query = "SELECT * FROM mahasiswa
+    $query = "SELECT * FROM portal-berita
                 WHERE
             nama = '$keyword'
             ";
@@ -149,11 +143,7 @@ function registrasi($data) {
     }
 
     // cek konfirmasi password
-    // var_dump($password);
-    // var_dump($password2);
-    // die();
-    if( $password != $password2 )
-    {
+    if( $password !== $password2 ){
         echo "<script>
                 alert('konfirmasi password tidak sesuai!');
             </script>";

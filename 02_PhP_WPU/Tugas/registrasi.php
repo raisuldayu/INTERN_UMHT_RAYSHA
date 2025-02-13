@@ -1,15 +1,11 @@
 <?php
 require 'function.php';
-if( isset($_POST["register"]) ) {
-
-    if( registrasi($_POST) > 0 ) {
-        echo "<script>
-            alert('user baru berhasil ditambahkan!');
-            </script>";
+if ( isset($_POST['register'])) {
+    if ( registrasi($_POST) > 0 ) {
+        echo "Registrasi berhasil!";
     } else {
-        echo mysqli_error($conn);
+        echo "Registrasi gagal!";
     }
-
 }
 ?>
 
@@ -36,7 +32,7 @@ if( isset($_POST["register"]) ) {
         </li>
         <li>
             <label for="password">password :</label>
-            <input type="text" name="password" id="password">
+            <input type="password" name="password" id="password">
         </li>
         <li>
             <label for="password2">konfirmasi password :</label>

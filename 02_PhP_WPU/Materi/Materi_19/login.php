@@ -2,8 +2,17 @@
 session_start(); 
 
 // cek cookie
-if( isset($_COOKIE['login']) ) {
-    if( $_COOKIE['login'] == 'true' ) {
+if( isset($_COOKIE['id']) && isset($_COOKIE['key']) ) {
+    $id = $_COOKIE['id'];
+    $key = $_cookie['key'];
+
+    // ambil username berdasarkan id
+    $result = mysqli_query($conn, "SELECT username FROM user WHERE
+    id = $id");
+    $row = mysqli_fetch_assoc($result);
+
+    // cek cookie dan username
+    if( $key === hash('sha876', $row['username']) ) {
         $_SESSION['login'] = true;
     }
 }
@@ -20,13 +29,13 @@ if( isset($_POST["login"]) ) {
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    mysqli_query($conn, "SELECT * FROM user WHERE username = '$username'");
+    $siswi = mysqli_query($conn, "SELECT * FROM user WHERE username = '$username'");
 
     // cek username
-    if( mysqli_num_rows($result) === 1 ) {
+    if( mysqli_num_rows($siswi) === 1 ) {
 
         // cek password
-        $row = mysqli_fetch_assoc($result);
+        $row = mysqli_fetch_assoc($siswi);
         if( password_verify($password, $row["password"]) ) {
             // set session
             $_SESSION["login"] = true;
@@ -39,7 +48,7 @@ if( isset($_POST["login"]) ) {
             }
 
 
-            header("location: index.php");
+            header("Location: index.php");
             exit;
         }
     }
@@ -57,7 +66,7 @@ if( isset($_POST["login"]) ) {
 
         <?php if( isset($error) ) : ?>
             <p style="color: red; font-style: italic;">username / password salah</p>
-            <?php endif; ?>
+        <?php endif; ?>
 
         <form action="" method="post">
 
