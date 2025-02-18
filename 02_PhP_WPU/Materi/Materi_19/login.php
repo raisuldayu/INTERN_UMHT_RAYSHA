@@ -44,7 +44,8 @@ if( isset($_POST["login"]) ) {
             if( isset($_POST['remember']) ) {
                 // buat cookie
                 
-                setcookie('login', 'true', time() + 60);
+                setcookie('id', $row['id'], time() + 60);
+                setcookie('key', hash('sha256', $row['username']), time() + 60);
             }
 
 

@@ -29,7 +29,7 @@ if( isset($_POST["cari"]) ) {
 
 <table border="1">
     <tr>
-        <th>Judul</th>
+        <th>Judul</th>   
         <th>Isi</th>
         <th>Gambar</th>
         <th>Aksi</th>
