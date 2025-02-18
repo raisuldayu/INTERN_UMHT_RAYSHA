@@ -24,13 +24,14 @@ class Produk {
     public function getInfoProduk() {
         $str = "{$this->judul} | {$this->getLabel()} (Rp. {$this->harga})";
 
-}
+        return $str;
+    }
 }
 
 
 class Idol extends Produk {
     public function getInfoProduk() {
-        $str = "Idol : {$this->getInfoProduk()} - {$this->jmlHalaman} Halaman.";
+        $str = "Idol : " . parent::getInfoProduk() . " - {$this->jmlHalaman} Halaman.";
         return $str;
     }
 }
